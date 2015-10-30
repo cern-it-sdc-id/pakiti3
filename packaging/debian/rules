@@ -33,15 +33,14 @@ build-stamp: configure-stamp
 clean:
 	dh_testdir
 	dh_testroot
-
 	dh_clean
 
 install: build-stamp
 	dh_testdir
 	dh_testroot
 	dh_prep
-        install -D -m755 bin/pakiti-client   $(INSTALLDIR)/usr/bin/pakiti-client
-	install -D -m644 man/pakiti-client.1 $(INSTALLDIR)/usr/man1/pakiti-client.1
+        mv bin/pakiti-client  $(INSTALLDIR)/usr/bin/pakiti-client
+	mv man/pakiti-client.1 $(INSTALLDIR)/usr/man1/pakiti-client.1
 
 binary-indep:
 
