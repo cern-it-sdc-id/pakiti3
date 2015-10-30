@@ -36,9 +36,6 @@ clean:
 	dh_clean
 
 install: build-stamp
-	dh_testdir
-	dh_testroot
-	dh_prep
         mv bin/pakiti-client  $(INSTALLDIR)/usr/bin/pakiti-client
 	mv man/pakiti-client.1 $(INSTALLDIR)/usr/man1/pakiti-client.1
 
