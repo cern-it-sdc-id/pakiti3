@@ -1,15 +1,1 @@
-Source: pakiti
-Priority: optional
-Maintainer: Andrea Manzi <andrea.manzi@cer.ch>
-Build-Depends: 
-Standards-Version: 3.9.6
-Section: libs
-Vcs-Browser: http://svn.nordugrid.org/trac/packaging/browser/debian/cgsi-gsoap
-Vcs-Svn: http://svn.nordugrid.org/repos/packaging/debian/cgsi-gsoap
-
-Package: pakiti-client
-Provides: pakiti
-Architecture: any
-Description: Runs rpm -qa or dpkg -l, depends on the linux distro. Results are sent to the
- central Pakiti server using openssl s_client or curl.
-
+5
