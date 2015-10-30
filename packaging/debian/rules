@@ -41,4 +41,4 @@ binary: binary-indep binary-arch
 VERSION=3.0.1
 VERSTAG=1_0_1
 
-.Phony: binary binary-arch binary-indep build build-arch build-indep clean configure install
+.Phony: binary binary-arch binary-indep build build-arch build-indep configure install
