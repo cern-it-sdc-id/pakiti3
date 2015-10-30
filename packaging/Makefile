@@ -29,7 +29,7 @@ override_release: $(SPEC)
 deb-src: dist
 	rm -rf "$(PBUILDER_TMP)/$(NAME)-$(VERSION)"
 	tar xzf "$(NAME)-$(VERSION).tar.gz" -C "$(PBUILDER_TMP)"
-	mv "$(PBUILDER_TMP)/$(NAME)-$(VERSION)" "$(PBUILDER_TMP)/$(DEB_NAME)-$(VERSION)"
+	#mv "$(PBUILDER_TMP)/$(NAME)-$(VERSION)" "$(PBUILDER_TMP)/$(DEB_NAME)-$(VERSION)"
 	cp -rv debian "$(PBUILDER_TMP)/$(DEB_NAME)-$(VERSION)"
 	$(if $(RELEASE), sed -ri "s/($(DEB_NAME) )\((([0-9]+\.)+[0-9]+)-[0-9]+\)/\\1(\\2-$(RELEASE))/g" "$(PBUILDER_TMP)/$(DEB_NAME)-$(VERSION)/debian/changelog")
 	cp -f "$(NAME)-$(VERSION).tar.gz" "$(PBUILDER_TMP)/$(DEB_NAME)_$(VERSION).orig.tar.gz" 
