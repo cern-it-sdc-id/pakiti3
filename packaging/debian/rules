@@ -22,6 +22,8 @@ build-indep: build-stamp
 
 build-arch: build-stamp
 
+clean:
+
 build-stamp: configure-stamp
 	mkdir man 
 	pod2man --section=1 bin/pakiti-client > man/pakiti-client.1
@@ -41,4 +43,4 @@ binary: binary-indep binary-arch
 VERSION=3.0.1
 VERSTAG=1_0_1
 
-.Phony: binary binary-arch binary-indep build build-arch build-indep configure install
+.Phony: binary binary-arch binary-indep build build-arch build-indep clean configure install
