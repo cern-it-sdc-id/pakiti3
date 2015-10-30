@@ -1,0 +1,70 @@
+#!/usr/bin/make -f
+# -*- makefile -*-
+
+DEB_HOST_MULTIARCH ?= $(shell dpkg-architecture -qDEB_HOST_MULTIARCH)
+
+-include /usr/share/dpkg/buildflags.mk
+
+INSTALLDIR = $(CURDIR)/debian/tmp
+
+_prefix = /usr
+_datadir = $(_prefix)/share
+_docdir = $(_datadir)/doc
+
+configure: configure-stamp
+
+configure-stamp:
+	dh_testdir
+
+	touch $@
+
+build: build-indep build-arch
+
+build-indep: build-stamp
+
+build-arch: build-stamp
+
+build-stamp: configure-stamp
+	dh_testdir
+	mkdir man 
+	pod2man --section=1 bin/pakiti-client > man/pakiti-client.1
+	touch $@
+
+clean:
+	dh_testdir
+	dh_testroot
+
+	dh_clean
+
+install: build-stamp
+	dh_testdir
+	dh_testroot
+	dh_prep
+        install -D -m755 bin/pakiti-client   $(INSTALLDIR)/usr/bin/pakiti-client
+	install -D -m644 man/pakiti-client.1 $(INSTALLDIR)/usr/man1/pakiti-client.1
+
+binary-indep:
+
+binary-arch: install
+	dh_testdir
+	dh_testroot
+	dh_installchangelogs
+	dh_installdocs
+	dh_install --fail-missing
+	dh_installman
+	dh_lintian
+	dh_link
+	dh_compress
+	dh_fixperms
+	dh_makeshlibs
+	dh_installdeb
+
+	dh_md5sums
+	dh_builddeb
+
+binary: binary-indep binary-arch
+
+VERSION=3.0.1
+VERSTAG=1_0_1
+
+.Phony: binary binary-arch binary-indep build build-arch build-indep clean configure install
