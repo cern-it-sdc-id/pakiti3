@@ -15,7 +15,6 @@ configure: configure-stamp
 
 configure-stamp:
 	dh_testdir
-
 	touch $@
 
 build: build-indep build-arch
@@ -36,7 +35,7 @@ clean:
 	dh_clean
 
 install: build-stamp
-        mv bin/pakiti-client  $(INSTALLDIR)/usr/bin/pakiti-client
+	mv bin/pakiti-client  $(INSTALLDIR)/usr/bin/pakiti-client
 	mv man/pakiti-client.1 $(INSTALLDIR)/usr/man1/pakiti-client.1
 
 binary-indep:
